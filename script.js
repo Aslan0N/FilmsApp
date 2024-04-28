@@ -19,6 +19,29 @@ fetch(apiUrl)
       const image = document.createElement("img");
       image.src = movie.image.medium;
       image.alt = movie.name;
+      //
+      
+      const overlay = document.createElement("div")
+      overlay.classList.add("overlay");
+      const text = document.createTextNode(
+        `NAME: ${movie.name} / LANGUAGE: ${movie.language} / Genre: ${movie.genres}`
+    );
+          const para = document.createElement("p");
+      para.appendChild(text);
+      para.classList.add("title");
+      overlay.appendChild(para);
+
+      const overlayButton = document.createElement("button");
+      overlayButton.innerHTML = "Show";
+      overlayButton.classList.add("overlayButton")
+      card.appendChild(overlayButton);
+      overlayButton.addEventListener("click", ()=>{
+        overlay.classList.toggle("overlayShow");
+      })
+      
+      // 
+
+
 
       const content = document.createElement("div");
       content.classList.add("content");
@@ -36,6 +59,7 @@ fetch(apiUrl)
 
       card.appendChild(image);
       card.appendChild(content);
+      card.appendChild(overlay);
 
       moviesContainer.appendChild(card);
     });
